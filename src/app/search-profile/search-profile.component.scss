@@ -1,0 +1,67 @@
+.btn
+{
+    background-image: linear-gradient(to left, #054442, #8fbc8f);
+    border: none;
+    color: white;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    float: left;
+    width: auto;
+    padding: 10px;
+}
+
+input 
+{
+    width: 100%;
+}
+select 
+{
+    width: 100%;
+}
+h5 {
+    color: #054442;
+}
+.row {
+    height: auto;
+    padding: 10px;
+  }
+table tr td
+{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+table.grid-table tr > td:first-child {
+    background-color: #8fbc8f; 
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;padding: 0;
+
+    li{
+        background: whitesmoke;
+        padding: 1em;
+        border-radius: 4px;
+        margin-bottom: 7px;
+        p{
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        h6{
+            margin-left: 20px;
+            font-size:smaller;
+        }
+        span{
+            margin-left: 20px;
+            font-size:smaller;
+        }
+    }
+    li:hover{
+        background-color: floralwhite;
+        cursor: pointer;
+    }
+}

@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+body, html{
+    height: 100;
+    margin: 0 auto;
+}
+
+body{
+    font-family: 'Montserrat';
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.3em;
+    display: grid;
+    grid-template-columns: 30% auto;
+    a{
+        color: white;
+    }
+}
+
+section {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.btn {
+    background: black;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 1em;
+    cursor: pointer;
+    font-family: 'Montserrat';
+}
+
+select {
+    background-color: #FFF;
+    color: #000;
+    appearance: none;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c2c2c2;
+    text-align-last: center;
+    font-family: 'Montserrat';
+}
+
+.input-error{
+    color: red;
+    font-size: 12px;
+}
+.modal-content
+{
+    width: 500px;
+}
+.myCustomModalClass .modal-content {
+    width: 400px;
+   }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

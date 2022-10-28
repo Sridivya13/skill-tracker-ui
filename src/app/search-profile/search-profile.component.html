@@ -1,0 +1,94 @@
+<app-nav></app-nav>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-4">NAME:</div>
+            <div class="col-sm-4">
+                <input type="text" name="engineername" [(ngModel)]="engineerName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">ASSOCIATE ID:</div>
+            <div class="col-sm-4">
+                <input type="text" name="associateId" [(ngModel)]="associateId" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">SKILL:</div>
+            <div class="col-sm-4">
+                <select [(ngModel)]="selectedSkill">
+                    <option *ngFor="let skill of technicalSkills" [value]="skill.id">
+                        {{skill.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn" (click)="findAssociate()">SEARCH</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-sm-4">
+    </div>    
+</div>
+
+<div>
+    <ul *ngIf="engineers">
+        <li *ngFor ="let engineer of engineers">
+            <div class="row">
+                <div class="col-sm-4">
+                    <table class="grid-table">
+                        <tr>
+                            <td>
+                                Name:
+                            </td>
+                            <td>
+                                {{engineer.firstname}} {{engineer.lastname}}
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td>
+                                ID:
+                            </td>
+                            <td>
+                                {{engineer.associateId}}
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td>
+                                Email:
+                            </td>
+                            <td>
+                                {{engineer.emailAddress}}
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td>
+                                Mobile:
+                            </td>
+                            <td>
+                                {{engineer.mobile}}
+                            </td> 
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    <table class="grid-table">
+                        <tr *ngFor="let skill of engineer.technicalSkills">
+                            <td><label [htmlFor]="skill.id">{{skill.name}}: </label></td>
+                            <td><label [htmlFor]="skill.id">{{skill.proficiency}}</label></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    <table class="grid-table">
+                        <tr *ngFor="let skill of engineer.nonTechnicalSkills">
+                            <td><label [htmlFor]="skill.id">{{skill.name}}: </label></td>
+                            <td><label [htmlFor]="skill.id">{{skill.proficiency}}</label></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

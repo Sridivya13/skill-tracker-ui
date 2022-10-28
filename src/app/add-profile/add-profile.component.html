@@ -1,0 +1,119 @@
+<app-nav></app-nav>
+<div style="padding: 20px; width: 250px;">
+  <form [formGroup]="requiredForm" novalidate>
+    <h5>Personal Information:</h5>
+         <div class="form-group">
+          <label class="center-block">First Name:
+            <input class="form-control" formControlName="firstname"  [(ngModel)]="input.firstname" />
+          </label>
+        </div>
+        <div *ngIf="requiredForm.controls['firstname'].invalid && requiredForm.controls['firstname'].touched" class="alert alert-danger">
+            <div *ngIf="requiredForm.controls['firstname'].errors.required">
+             Firstname is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Last Name:
+            <input class="form-control" formControlName="lastname"  [(ngModel)]="input.lastname" />
+          </label>
+        </div>
+        <div *ngIf="requiredForm.controls['lastname'].invalid && requiredForm.controls['lastname'].touched" class="alert alert-danger">
+            <div *ngIf="requiredForm.controls['lastname'].errors.required">
+             Lastname is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Associate ID:
+            <input class="form-control" formControlName="associateid"  [(ngModel)]="input.associateId" />
+          </label>
+        </div>
+        <div *ngIf="requiredForm.controls['associateid'].invalid && requiredForm.controls['associateid'].touched" class="alert alert-danger">
+          <div *ngIf="requiredForm.controls['associateid'].errors.required">
+          Associate ID is required.
+        </div>
+        <div *ngIf="requiredForm.controls['associateid'].errors?.pattern">
+          Associate ID is not valid.
+        </div>
+      </div>
+        <div class="form-group">
+          <label class="center-block">Mobile Number:
+            <input class="form-control" formControlName="mobile" placeholder="91234567890" pattern="[0-9]{10}"  [(ngModel)]="input.mobile" />
+          </label>
+        </div>
+        <div *ngIf="requiredForm.controls['mobile'].invalid && requiredForm.controls['mobile'].touched" class="alert alert-danger">
+            <div *ngIf="requiredForm.controls['mobile'].errors.required">
+             Mobile number is required.
+          </div>
+          <div *ngIf="requiredForm.controls['mobile'].errors?.pattern">
+            Mobile number is not valid.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Email Address:
+            <input class="form-control" formControlName="emailaddress"  [(ngModel)]="input.emailAddress" />
+          </label>
+        </div>
+        <div *ngIf="requiredForm.controls['emailaddress'].invalid && requiredForm.controls['emailaddress'].touched" class="alert alert-danger">
+            <div *ngIf="requiredForm.controls['emailaddress'].errors.required">
+            Email address is required.
+          </div>
+          <div *ngIf="requiredForm.controls['emailaddress'].errors?.pattern">
+            Email address is not valid.
+          </div>
+        </div>
+        <h5>Technical Skills:</h5>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Skill name</th>
+                    <th>Proficiency</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let skill of technicalSkills">
+                    <td><label style="padding: 10px" [htmlFor]="skill.id">{{skill.name}}</label></td>
+                    <td>
+                      <div class="form-group">
+                          <input type="number" class="form-control" pattern="([0-9]|1[0-9]|20)" formControlName="techproficiency"  [(ngModel)]="skill.proficiency" style="width: 100px;"  />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div *ngIf="requiredForm.controls['techproficiency'].invalid && requiredForm.controls['techproficiency'].touched" class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['techproficiency'].errors.required">
+                Proficiency is required.
+              </div>
+              <div *ngIf="requiredForm.controls['techproficiency'].errors?.pattern">
+                Proficiency must be between 0-20.
+              </div>
+            </div>
+              <h5>Non Technical Skiils:</h5>
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Skill name</th>
+                      <th>Proficiency</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tbody>
+                        <tr *ngFor="let skill of nonTechnicalSkills">
+                          <td><label style="padding: 10px" [htmlFor]="skill.id">{{skill.name}}</label></td>
+                          <td>
+                            <input type="number" class="form-control" pattern="([0-9]|1[0-9]|20)" formControlName="nontechproficiency"  [(ngModel)]="skill.proficiency" style="width: 100px;"  />
+                          </td>
+                        </tr>
+                      </tbody>
+                </table>
+                <div *ngIf="requiredForm.controls['nontechproficiency'].invalid && requiredForm.controls['nontechproficiency'].touched" class="alert alert-danger">
+                  <div *ngIf="requiredForm.controls['nontechproficiency'].errors.required">
+                  Proficiency is required.
+                </div>
+                <div *ngIf="requiredForm.controls['nontechproficiency'].errors?.pattern">
+                  Proficiency must be between 0-20.
+                </div>
+              </div>
+            <button class="btn" (click)="register()">REGISTER</button>
+    </form>
+    </div>    

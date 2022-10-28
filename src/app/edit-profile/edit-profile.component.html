@@ -1,0 +1,106 @@
+<app-nav></app-nav>
+<form [formGroup]="findForm" novalidate>
+  <div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-4">Enter Associate Id:</div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input class="form-control" formControlName="associateid"  [(ngModel)]="associateId" />
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <button class="findbtn" (click)="findAssociate()">FIND ENGINEER</button>
+            </div>
+
+        </div>
+        
+    </div>
+    <div class="col-sm-4">
+      <div *ngIf="findForm.controls['associateid'].invalid && findForm.controls['associateid'].touched" class="alert alert-danger">
+        <div *ngIf="findForm.controls['associateid'].errors.required">
+        Associate ID is required.
+      </div>
+      <div *ngIf="findForm.controls['associateid'].errors?.pattern">
+        Associate ID is not valid.
+      </div>
+    </div>
+    </div>    
+</div>
+</form>
+
+<div *ngIf="engineer">
+<form [formGroup]="updateForm" novalidate>
+        <div class="row">
+            <div class="col-sm-4">
+                <h5>Personal Information:</h5>
+                <label>{{engineer.firstname}}</label><br>
+                <label>{{engineer.lastname}}</label><br>
+                <label>{{engineer.associateId}}</label><br>
+                <label>{{engineer.emailAddress}}</label><br>
+            </div>
+            <div class="col-sm-4">
+                <h5>Technical Skiils:</h5>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Skill name</th>
+                        <th>Proficiency</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let skill of engineer.technicalSkills">
+                        <td><label style="padding: 10px" [htmlFor]="skill.id">{{skill.name}}</label></td>
+                        <td>
+                          <div class="form-group">
+                              <input type="number" class="form-control" pattern="([1-9]|1[0-9]|20)" formControlName="techproficiency"  [(ngModel)]="skill.proficiency" style="width: 100px;"  />
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div *ngIf="updateForm.controls['techproficiency'].invalid && updateForm.controls['techproficiency'].touched" class="alert alert-danger">
+                    <div *ngIf="updateForm.controls['techproficiency'].errors.required">
+                    Proficiency is required.
+                  </div>
+                  <div *ngIf="updateForm.controls['techproficiency'].errors?.pattern">
+                    Proficiency must be between 1-20.
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h5>Non Technical Skiils:</h5>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Skill name</th>
+                        <th>Proficiency</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tbody>
+                        <tr *ngFor="let skill of engineer.nonTechnicalSkills">
+                          <td><label style="padding: 10px" [htmlFor]="skill.id">{{skill.name}}</label></td>
+                          <td>
+                            <input type="number" class="form-control" pattern="([1-9]|1[0-9]|20)" formControlName="nontechproficiency"  [(ngModel)]="skill.proficiency" style="width: 100px;"  />
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+                  <div *ngIf="updateForm.controls['nontechproficiency'].invalid && updateForm.controls['nontechproficiency'].touched" class="alert alert-danger">
+                    <div *ngIf="updateForm.controls['nontechproficiency'].errors.required">
+                    Proficiency is required.
+                  </div>
+                  <div *ngIf="updateForm.controls['nontechproficiency'].errors?.pattern">
+                    Proficiency must be between 1-20.
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding-right: 10px;">
+            <button class="btn" (click)="updateprofile()">UPDATE PROFILE</button>
+
+        </div>
+    </form>
+    </div>    
